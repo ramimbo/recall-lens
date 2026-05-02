@@ -1,0 +1,22 @@
+{
+  "name": "recall-lens",
+  "version": "0.1.0",
+  "description": "A small official-recall triage desk for households and caregivers.",
+  "type": "module",
+  "private": false,
+  "scripts": {
+    "refresh": "node src/cli.js --out docs",
+    "test": "node --test"
+  },
+  "keywords": [
+    "recalls",
+    "consumer-safety",
+    "fda",
+    "cpsc"
+  ],
+  "author": "Kossi Korhonen",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  }
+}

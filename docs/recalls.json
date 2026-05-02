@@ -1,0 +1,216 @@
+[
+  {
+    "source": "FDA",
+    "title": "Booey's Dragon's Breath sauce, 15.2oz ringneck glass bottle. UPC on bottle: 7 01936 29222 3.  There are 12 bottles per case. Manufactured Exclusively for  BOOEYS GOURMET 3924 N. Cannon St. Spokane, WA 99205.  Label declares: INGREDIENTS: Contains Soy and Wheat. *** Soy Sauce (Water, Soybeans, Wheat, Salt ***Squid Sauce (Anchovy Extract) ***Sesame Oil***.",
+    "date": "2026-04-22",
+    "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts",
+    "company": "Booey's Gourmet LLC",
+    "risk": "Class II",
+    "reason": "Ingredients statement declares Anchovy and Sasame, but Contains statement does not declare Fish (Anchovy) and Sesame.",
+    "remedy": "Recall began 2026-03-23. Check product codes before using.",
+    "match": {
+      "score": 23,
+      "hits": [
+        "sauce",
+        "allergen: fish",
+        "allergen: sesame",
+        "allergen: wheat"
+      ],
+      "action": "Compare the UPC, lot, model, or date code with the official notice. Stop using it if the details match."
+    }
+  },
+  {
+    "source": "FDA",
+    "title": "ReadyMeals Turkey Bacon & Cheddar Pretzel Duo Sandwich, perishable, Keep Refrigerated, plastic clamshell, net wt. 10 oz, UPC 8 26766 25036 3. Distributed By F&S Fresh Foods Vineland, NJ 08360.  Label declares CONTAINS EGG, MILK, SOY, WHEAT.",
+    "date": "2026-04-15",
+    "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts",
+    "company": "F&S Fresh Foods, Inc.",
+    "risk": "Class II",
+    "reason": "Undeclared sesame. Sandwich contains visible sesame but label does not declare sesame.",
+    "remedy": "Recall began 2026-04-02. Check product codes before using.",
+    "match": {
+      "score": 20,
+      "hits": [
+        "allergen: sesame",
+        "allergen: wheat",
+        "allergen: milk"
+      ],
+      "action": "Compare the UPC, lot, model, or date code with the official notice. Stop using it if the details match."
+    }
+  },
+  {
+    "source": "FDA",
+    "title": "Riverence Smoked Trout Dip, net wt. 7oz. Product is perishable, refrigerated, packaged in plastic tub. Product is shipped to consignee frozen by the case (12/7oz. units per case).   Retail container UPC 7 07651 30561 3. Case item UPC #007076513057   Label declares Ingredients: Smoked Trout, Whipped Cream Cheese, Sour Cream, Horseradish, Lemon Juice, Dill, Black Pepper. Contains: Fish (Rainbow Trout).",
+    "date": "2026-04-15",
+    "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts",
+    "company": "Riverence Provisions LLC",
+    "risk": "Class II",
+    "reason": "Label declares cream cheese but does not declare milk",
+    "remedy": "Recall began 2026-03-19. Check product codes before using.",
+    "match": {
+      "score": 18,
+      "hits": [
+        "cheese",
+        "allergen: fish",
+        "allergen: milk"
+      ],
+      "action": "Compare the UPC, lot, model, or date code with the official notice. Stop using it if the details match."
+    }
+  },
+  {
+    "source": "CPSC",
+    "title": "5-Drawer Dressers Recalled Due to Risk of Serious Injury or Death from Tip-Over and Entrapment Hazards; Violates Mandatory Standard for Clothing Storage Units; Imported by UHOMEPRO",
+    "date": "2026-04-30",
+    "url": "https://www.cpsc.gov/Recalls/2026/5-Drawer-Dressers-Recalled-Due-to-Risk-of-Serious-Injury-or-Death-from-Tip-Over-and-Entrapment-Hazards-Violates-Mandatory-Standard-for-Clothing-Storage-Units-Imported-by-UHOMEPRO",
+    "company": "",
+    "risk": "The recalled dressers are unstable if they are not anchored to the wall, posing tip-over and entrapment hazards that can result in risks of serious injuries or death to children. The dressers violate the mandatory safety standard as required by the STURDY Act.",
+    "reason": "This recall involves UHOMEPRO 5-Drawer Dressers. The recalled dressers are made of particle board and were sold in black and white. The dresser has five drawers, each with a golden handle. The dresser is 26 inches long by 15.7 inches wide by 38.6 inches tall and weighs about 66 pounds. The recalled dressers are unstable if they are not anchored to the wall, posing tip-over and entrapment hazards that can result in risks of serious injuries or death to children. The dressers violate the mandatory safety standard as required by the STURDY Act.",
+    "remedy": "Consumers should immediately stop using the recalled dressers if they are not anchored to the wall and place them in an area that children cannot access. Contact UHOMEPRO for instructions on how to identify affected units and dispose of the dressers to receive a full refund. Consumers will be asked to write the word \"recalled\" on the top and all sides of the dresser with a permanent marker and to submit a photo to uhomeprorecall@outlook.com demonstrating disposal of the product.",
+    "match": {
+      "score": 12,
+      "hits": [
+        "dresser",
+        "risk group: child"
+      ],
+      "action": "Compare the UPC, lot, model, or date code with the official notice. Stop using it if the details match."
+    }
+  },
+  {
+    "source": "CPSC",
+    "title": "CBC Group Recalls Stephan Baby Boo Bunnie and Friends Children's Toys Due to Risk of Serious Injury from Choking and Laceration Hazards",
+    "date": "2026-04-30",
+    "url": "https://www.cpsc.gov/Recalls/2026/CBC-Group-Recalls-Stephan-Baby-Boo-Bunnie-and-Friends-Childrens-Toys-Due-to-Risk-of-Serious-Injury-from-Choking-and-Laceration-Hazards",
+    "company": "",
+    "risk": "The toys' plastic cube can break into small parts or sharp edges, posing a risk of serious injury from choking and laceration hazards.",
+    "reason": "This recall involves all Stephan Baby-branded Boo Bunnie and Friends children's toys. The recalled toys consist of a small plush animal with a removable, water-filled plastic cube that can be chilled for comfort. The toys measure between 3.5 and 3.7 inches long, between 2.5 and 3 inches tall and between 2.3 and 2.5 inches wide and were sold in various colors and animal shapes. \"Stephan BABY\" is printed on a sewn-in label located along the side seam on the right underside of the plush and on the front and on the underside of the toys' box packaging. The toys' plastic cube can break into small parts or sharp edges, posing a risk of serious injury from choking and laceration hazards.",
+    "remedy": "Consumers should immediately stop using the recalled toys' plastic cube and take it away from children. Consumers should contact Stephan Baby for a refund or store credit. Consumers with proof of purchase will receive a full refund. Consumers without proof of purchase will receive a $10 refund in the form of a check or a $20 stephanbaby.com store credit. Consumers will be asked to write in permanent marker \"Recalled\" on the indented area of the cube and upload a photo of the toy and the marked cube to https://recall.stephanbaby.com/ to receive a pre-paid shipping return label for the cube.",
+    "match": {
+      "score": 12,
+      "hits": [
+        "baby",
+        "risk group: child"
+      ],
+      "action": "Compare the UPC, lot, model, or date code with the official notice. Stop using it if the details match."
+    }
+  },
+  {
+    "source": "CPSC",
+    "title": "Segmart 4-Drawer Dressers Recalled Due to Risk of Serious Injury or Death from Tip-Over and Entrapment; Violate Mandatory Standard for Clothing Storage Units; Sold on Walmart.com by SOFT",
+    "date": "2026-04-30",
+    "url": "https://www.cpsc.gov/Recalls/2026/Segmart-4-Drawer-Dressers-Recalled-Due-to-Risk-of-Serious-Injury-or-Death-from-Tip-Over-and-Entrapment-Violate-Mandatory-Standard-for-Clothing-Storage-Units-Sold-on-Walmart-com-by-SOFT",
+    "company": "",
+    "risk": "The recalled dressers are unstable if they are not anchored to the wall, posing tip-over and entrapment hazards that can result in risks of serious injuries or death to children. The dressers violate the mandatory safety standard as required by the STURDY Act.",
+    "reason": "This recall involves Segmart 4-Drawer Dressers. The recalled dressers are made of particle board and were sold in black and white. The dressers have four drawers, are 15.7 inches long by 26 inches wide by 28.5 inches tall and weigh 70 pounds. Model numbers \"FFLWM002BK\" or \"FFLWM002WE\" are printed on labels located the product packaging. The recalled dressers are unstable if they are not anchored to the wall, posing tip-over and entrapment hazards that can result in risks of serious injuries or death to children. The dressers violate the mandatory safety standard as required by the STURDY Act.",
+    "remedy": "Consumers should immediately stop using the recalled dressers if they are not anchored to the wall and place them in an area that children cannot access. Contact SOFT for instructions on how to identify affected units and dispose of the dressers to receive a full refund. Consumers will be asked to submit a photo to segmartdresserecall@outlook.com demonstrating disposal of the product.",
+    "match": {
+      "score": 12,
+      "hits": [
+        "dresser",
+        "risk group: child"
+      ],
+      "action": "Compare the UPC, lot, model, or date code with the official notice. Stop using it if the details match."
+    }
+  },
+  {
+    "source": "FDA",
+    "title": "DADI NONGFU DRIED SALT CHILLI VEGETABLE(S); Ingredients: Radish, chili, roasted sesame, prickly ash, edible salt, soybean oil, edible vinegar, white granulated sugar, spices, food additives (sodium glutamate, citric acid, sodium benzoate, potassium sorbate, sodium saccharin, acesulfame, sucralose, disodium EDTA, turmeric).; Allergen: This product contains sesame and soy products; Net Wt. 14.1 oz(400g)",
+    "date": "2026-04-15",
+    "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts",
+    "company": "MEI YU CHENG DA TRADING INC",
+    "risk": "Class III",
+    "reason": "Products contain banned sweetener: cyclamates.",
+    "remedy": "Recall began 2025-11-13. Check product codes before using.",
+    "match": {
+      "score": 10,
+      "hits": [
+        "allergen: sesame"
+      ],
+      "action": "Check the ingredient and allergen language before anyone with that allergy uses it."
+    }
+  },
+  {
+    "source": "FDA",
+    "title": "Prickly Pear Jelly. 9 oz (268 g) glass bottle with gold cap.",
+    "date": "2026-04-08",
+    "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts",
+    "company": "The Maros Group, LLC",
+    "risk": "Class II",
+    "reason": "Undeclared milk.",
+    "remedy": "Recall began 2025-11-05. Check product codes before using.",
+    "match": {
+      "score": 10,
+      "hits": [
+        "allergen: milk"
+      ],
+      "action": "Check the ingredient and allergen language before anyone with that allergy uses it."
+    }
+  },
+  {
+    "source": "CPSC",
+    "title": "Alliance Chemical Recalls 1-K Kerosene Heater Fluid Containers Due to Risk of Serious Injury or Death from Flash Fire, Burn and Child Poisoning; Violates Mandatory Standards for Portable Fuel Containers",
+    "date": "2026-04-30",
+    "url": "https://www.cpsc.gov/Recalls/2026/Alliance-Chemical-Recalls-1-K-Kerosene-Heater-Fluid-Containers-Due-to-Risk-of-Serious-Injury-or-Death-from-Flash-Fire-Burn-and-Child-Poisoning-Violates-Mandatory-Standards-for-Portable-Fuel-Containers",
+    "company": "Alliance Chemical, of Taylor, Texas",
+    "risk": "The pre-filled fuel containers violate the mandatory safety standards for portable fuel containers because they lack flame mitigation devices required under the Portable Fuel Container Safety Act, posing a deadly risk of flash fire. In addition, the Children's Gasoline Burn Prevention Act requires all closures on portable kerosene fuel containers to be child-resistant. The container is not child-resistant, posing a risk of burn and poisoning to children.",
+    "reason": "This recall involves the bottles of 1-K Kerosene Heater Fuel. The bottles come in transparent plastic containers with white caps and have a multicolor label with \"KEROSENE\" in all capital white lettering and \"1-K HEATER FUEL\" in similar lettering. The label only has a single front panel and contains warnings and distributor information. The pre-filled fuel containers violate the mandatory safety standards for portable fuel containers because they lack flame mitigation devices required under the Portable Fuel Container Safety Act, posing a deadly risk of flash fire. In addition, the Children's Gasoline Burn Prevention Act requires all closures on portable kerosene fuel containers to be child-resistant. The container is not child-resistant, posing a risk of burn and poisoning to children.",
+    "remedy": "Consumers should stop using the recalled fuel containers immediately, place them out of reach of children and contact Alliance Chemical for a full refund. Consumers will be asked to provide a dated photo of the product and dispose of the fuel following local hazardous waste procedures. Note: Kerosene fuel is hazardous. Fuel containers should be disposed of or recycled by following local hazardous waste procedures.",
+    "match": {
+      "score": 9,
+      "hits": [
+        "risk group: child"
+      ],
+      "action": "Compare the official notice with the product at home before acting on any message."
+    }
+  },
+  {
+    "source": "CPSC",
+    "title": "Bayer Recalls 6 mL Size Afrin Original Nasal Spray Bottles Due to Risk of Serious Injury or Illness from Child Poisoning; Violates Mandatory Standard for Child-Resistant Packaging",
+    "date": "2026-04-30",
+    "url": "https://www.cpsc.gov/Recalls/2026/Bayer-Recalls-6-mL-Size-Afrin-Original-Nasal-Spray-Bottles-Due-to-Risk-of-Serious-Injury-or-Illness-from-Child-Poisoning-Violates-Mandatory-Standard-for-Child-Resistant-Packaging",
+    "company": "Bayer HealthCare LLC, of Whippany, New Jersey",
+    "risk": "The 6 mL nasal sprays contain an imidazoline, which must be in child-resistant packaging or meet the labeling requirements for non-complying packaging, as required by the Poison Prevention Packaging Act. The 6 mL nasal spray's packaging is not child-resistant nor bears the required labeling statement, posing a risk of serious injury or illness from poisoning, if the contents are swallowed by young children.",
+    "reason": "This recall involves unexpired Travel Size Afrin® Original Nasal Spray 6 mL bottles, with Lot numbers 230361, 240822, 241198, 250066, 250152, 250646, and 250831. These travel size bottles have \"Afrin® Original Nasal Spray\" and \"1/5 FL OZ (6 mL)\" printed on a label located on the front of the bottle. It is a six-digit number, followed by the expiration date in following format: \"YYYYMMM\". No other sizes of Afrin are included in this recall. The 6 mL nasal sprays contain an imidazoline, which must be in child-resistant packaging or meet the labeling requirements for non-complying packaging, as required by the Poison Prevention Packaging Act. The 6 mL nasal spray's packaging is not child-resistant nor bears the required labeling statement, posing a risk of serious injury or illness from poisoning, if the contents are swallowed by young children.",
+    "remedy": "Consumers should immediately secure the recalled bottles out of sight and reach of children and go to the webform posted on www.livewell.bayer.com/afrin-original-spray-recall to begin a request for a refund. Consumers will be asked to take and submit a photo of the product before disposing of it in order to receive a refund.",
+    "match": {
+      "score": 9,
+      "hits": [
+        "risk group: child"
+      ],
+      "action": "Compare the official notice with the product at home before acting on any message."
+    }
+  },
+  {
+    "source": "CPSC",
+    "title": "Build-A-Bear Workshop Recalls Heartwarming Hugs Bears Due to Risk of Serious Injury or Death from Choking Hazard to Children",
+    "date": "2026-04-30",
+    "url": "https://www.cpsc.gov/Recalls/2026/Build-A-Bear-Workshop-Recalls-Heartwarming-Hugs-Bears-Due-to-Risk-of-Serious-Injury-or-Death-from-Choking-Hazard-to-Children",
+    "company": "",
+    "risk": "The zipper slider on the side pouch can detach, posing a risk of serious injury or death from choking hazard to children.",
+    "reason": "This recall involves the Heartwarming Hugs weighted plush bear with model number 034464. It has a side pouch containing a heart filled with 2.5 pounds of ceramic beads, which can be heated or cooled for comfort. The pouch is secured with a zipper. The product is graded 3 years+ and carries a cautionary statement advising adult supervision due to the heated/cooled element. The model number is located on the label sewn into the back side of one bear leg. The zipper slider on the side pouch can detach, posing a risk of serious injury or death from choking hazard to children.",
+    "remedy": "Consumers should immediately stop using the recalled Heartwarming Hugs Bear and return it to a local Build-A-Bear Workshop store to receive a refund in the form of original payment or a gift card for the original purchase price redeemable toward any available Make-Your-Own furry friend and any other available merchandise. If a consumer is unable to return their Heartwarming Hugs Bear to a local store, they can visit www.buildabear.com/recalls for more information or call Build-A-Bear to receive a free return shipping label to return the recalled bear and to receive a refund check in the form of original payment or in the form of a digital gift card to use on the firm's website.",
+    "match": {
+      "score": 9,
+      "hits": [
+        "risk group: child"
+      ],
+      "action": "Compare the official notice with the product at home before acting on any message."
+    }
+  },
+  {
+    "source": "CPSC",
+    "title": "Earthtec Pool Drain Covers Recalled Due to Risk of Serious Injury or Death from Entrapment and Drowning Hazards; Violates Virginia Graeme Baker Pool & Spa Safety Act; Manufactured by Tonyidea",
+    "date": "2026-04-30",
+    "url": "https://www.cpsc.gov/Recalls/2026/Earthtec-Pool-Drain-Covers-Recalled-Due-to-Risk-of-Serious-Injury-or-Death-from-Entrapment-and-Drowning-Hazards-Violates-Virginia-Graeme-Baker-Pool-Spa-Safety-Act-Manufactured-by-Tonyidea",
+    "company": "Shenzhen Qiangonghui Technology Co., Ltd., dba Tonyidea",
+    "risk": "The recalled drain covers violate the entrapment protection standards of the Virginia Graeme Baker Pool and Spa Safety Act (VGBA), posing entrapment and drowning hazards to swimmers and bathers.",
+    "reason": "This recall involves Earthtec pool drain covers that are sold for use in swimming pools. The pool drain covers are 7 3/8-inches in diameter and come with two screws. They are white and made of ABS plastic. The recalled drain covers violate the entrapment protection standards of the Virginia Graeme Baker Pool and Spa Safety Act (VGBA), posing entrapment and drowning hazards to swimmers and bathers.",
+    "remedy": "Pool owners, pool operators and consumers should stop using pools with the recalled pool drain covers immediately. To receive a refund, consumers should remove the drain cover from the pool, and destroy it, take a photo of the removed cover, and send it to Tonyidea by email at earthtecrecall@outlook.com. Ensure all pools and spas have VGBA-compliant drain covers and teach children to stay away from drains.",
+    "match": {
+      "score": 9,
+      "hits": [
+        "risk group: child"
+      ],
+      "action": "Compare the official notice with the product at home before acting on any message."
+    }
+  }
+]

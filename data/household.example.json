@@ -1,0 +1,26 @@
+{
+  "name": "Example household",
+  "watch": [
+    "baby",
+    "charger",
+    "dresser",
+    "dates",
+    "sauce",
+    "cinnamon",
+    "cheese"
+  ],
+  "allergens": [
+    "fish",
+    "sesame",
+    "wheat",
+    "milk",
+    "peanut",
+    "tree nut"
+  ],
+  "higherRisk": [
+    "child",
+    "pregnant",
+    "older adult",
+    "immune"
+  ]
+}
