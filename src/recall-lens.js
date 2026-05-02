@@ -159,12 +159,19 @@ ${sources.map((source) => `- ${source.name}: ${source.url}`).join("\n")}
 `;
 }
 
-export function renderHtml({ recalls, allRecalls, profile, generatedAt = new Date() }) {
+export function renderHtml({
+  recalls,
+  allRecalls,
+  profile,
+  generatedAt = new Date(),
+  dataEndpoint = null
+}) {
   const appState = {
     generatedAt: generatedAt.toISOString(),
     profile,
     recalls: allRecalls.map(slimRecall),
-    sources
+    sources,
+    dataEndpoint
   };
   const stateJson = JSON.stringify(appState).replaceAll("<", "\\u003c");
   return `<!doctype html>
@@ -175,20 +182,23 @@ export function renderHtml({ recalls, allRecalls, profile, generatedAt = new Dat
   <title>Recall Lens</title>
   <style>
     :root {
-      color-scheme: light;
-      --paper: #fbf8f1;
-      --panel: #fffdf8;
-      --ink: #181817;
-      --muted: #5e625e;
-      --line: #ddd6ca;
-      --red: #a33a2d;
-      --red-soft: #f4dfdb;
-      --blue: #155f8c;
-      --blue-soft: #dcecf4;
-      --green: #2f6f58;
-      --green-soft: #dcebe3;
-      --yellow: #8a6615;
-      --yellow-soft: #f1e5bf;
+      color-scheme: dark;
+      --paper: #090b10;
+      --panel: #111823;
+      --panel-2: #151e2b;
+      --ink: #f6f2ea;
+      --muted: #a8b0bd;
+      --line: #283548;
+      --red: #ff7a6e;
+      --red-soft: #351b1e;
+      --blue: #7cc7ff;
+      --blue-soft: #102538;
+      --green: #77d8a1;
+      --green-soft: #132b24;
+      --yellow: #f0c86b;
+      --yellow-soft: #342911;
+      --violet: #b69cff;
+      --shadow: rgba(0, 0, 0, 0.3);
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background: var(--paper);
       color: var(--ink);
@@ -204,13 +214,13 @@ export function renderHtml({ recalls, allRecalls, profile, generatedAt = new Dat
     .brand h1 { font-size: 1.12rem; line-height: 1; margin: 0; }
     .brand p { color: var(--muted); font-size: 0.9rem; margin: 4px 0 0; }
     .actions { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
-    .button { min-height: 38px; border: 1px solid var(--line); border-radius: 8px; background: var(--panel); color: var(--ink); padding: 8px 11px; font-weight: 750; cursor: pointer; }
-    .button.primary { background: var(--ink); color: #fff; border-color: var(--ink); }
-    .button:hover { border-color: #9f9584; }
+    .button { min-height: 38px; border: 1px solid var(--line); border-radius: 8px; background: var(--panel-2); color: var(--ink); padding: 8px 11px; font-weight: 750; cursor: pointer; }
+    .button.primary { background: var(--blue); color: #07111b; border-color: var(--blue); }
+    .button:hover { border-color: #5d7290; }
     .hero { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr); gap: 14px; margin-bottom: 14px; }
-    .brief { padding: 22px; background: #f8efe2; border: 1px solid #dccdb8; border-radius: 8px; min-height: 222px; display: grid; align-content: space-between; }
+    .brief { padding: 22px; background: linear-gradient(145deg, #172131, #111823 58%, #221927); border: 1px solid var(--line); border-radius: 8px; min-height: 222px; display: grid; align-content: space-between; box-shadow: 0 18px 60px var(--shadow); }
     .brief h2 { font-size: clamp(2.1rem, 5vw, 4.7rem); line-height: 0.93; margin: 0; max-width: 840px; letter-spacing: 0; overflow-wrap: anywhere; }
-    .brief p { color: #463f36; font-size: 1.02rem; line-height: 1.48; max-width: 720px; margin: 16px 0 0; }
+    .brief p { color: var(--muted); font-size: 1.02rem; line-height: 1.48; max-width: 720px; margin: 16px 0 0; }
     .stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
     .stat { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 16px; min-height: 106px; display: grid; align-content: space-between; }
     .stat strong { font-size: 2rem; line-height: 1; }
@@ -220,18 +230,18 @@ export function renderHtml({ recalls, allRecalls, profile, generatedAt = new Dat
     .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 15px; }
     .panel h3 { margin: 0 0 12px; font-size: 0.98rem; }
     .field { display: grid; gap: 6px; margin-bottom: 12px; }
-    label { color: #373a36; font-size: 0.84rem; font-weight: 760; }
-    input, textarea, select { width: 100%; border: 1px solid #cfc6b7; background: #fff; color: var(--ink); border-radius: 8px; padding: 10px; }
+    label { color: #d9e1ed; font-size: 0.84rem; font-weight: 760; }
+    input, textarea, select { width: 100%; border: 1px solid var(--line); background: #0c111a; color: var(--ink); border-radius: 8px; padding: 10px; }
     textarea { min-height: 70px; resize: vertical; line-height: 1.35; }
     .tabs { display: flex; gap: 6px; flex-wrap: wrap; }
-    .tab { border: 1px solid var(--line); border-radius: 8px; background: #fff; padding: 8px 10px; color: var(--muted); font-weight: 760; cursor: pointer; }
-    .tab.active { background: var(--ink); border-color: var(--ink); color: #fff; }
+    .tab, .quick-chip { border: 1px solid var(--line); border-radius: 8px; background: #0c111a; padding: 8px 10px; color: var(--muted); font-weight: 760; cursor: pointer; }
+    .tab.active, .quick-chip:hover { background: var(--blue-soft); border-color: var(--blue); color: var(--ink); }
     .small { color: var(--muted); font-size: 0.84rem; line-height: 1.4; margin: 0; }
     .list-head { display: flex; justify-content: space-between; gap: 14px; align-items: end; margin: 2px 0 12px; }
     .list-head h2 { margin: 0; font-size: 1.24rem; }
     .list-head p { color: var(--muted); margin: 4px 0 0; }
     .recall-list { display: grid; gap: 10px; }
-    .recall { background: var(--panel); border: 1px solid var(--line); border-left: 5px solid var(--blue); border-radius: 8px; padding: 16px; display: grid; gap: 11px; }
+    .recall { background: var(--panel); border: 1px solid var(--line); border-left: 5px solid var(--blue); border-radius: 8px; padding: 16px; display: grid; gap: 11px; box-shadow: 0 10px 32px var(--shadow); }
     .recall.priority { border-left-color: var(--red); }
     .recall.allergen { border-left-color: var(--yellow); }
     .recall.product { border-left-color: var(--green); }
@@ -241,7 +251,7 @@ export function renderHtml({ recalls, allRecalls, profile, generatedAt = new Dat
     .score { min-width: 54px; text-align: right; color: var(--muted); font-weight: 800; }
     .recall h3 { font-size: 1.08rem; line-height: 1.3; margin: 0; }
     .meta { display: flex; gap: 8px; flex-wrap: wrap; }
-    .chip { display: inline-flex; align-items: center; min-height: 26px; border-radius: 8px; padding: 4px 8px; background: #f0ebe2; color: #453f37; font-size: 0.8rem; font-weight: 720; }
+    .chip { display: inline-flex; align-items: center; min-height: 26px; border-radius: 8px; padding: 4px 8px; background: #1c2634; color: #dbe3ef; font-size: 0.8rem; font-weight: 720; }
     .chip.red { background: var(--red-soft); color: var(--red); }
     .chip.yellow { background: var(--yellow-soft); color: var(--yellow); }
     .chip.green { background: var(--green-soft); color: var(--green); }
@@ -249,9 +259,10 @@ export function renderHtml({ recalls, allRecalls, profile, generatedAt = new Dat
     details { border-top: 1px solid var(--line); padding-top: 10px; }
     summary { cursor: pointer; color: var(--blue); font-weight: 800; }
     .detail-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 10px; }
-    .detail-grid p { margin: 0; color: #46423a; line-height: 1.45; }
+    .detail-grid p { margin: 0; color: #d3d9e4; line-height: 1.45; }
     .empty { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 22px; color: var(--muted); }
     .footer { color: var(--muted); margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--line); font-size: 0.88rem; }
+    .status { color: var(--muted); font-size: 0.9rem; margin: 0 0 12px; }
     @media (max-width: 860px) {
       .topbar, .list-head, .recall-top { align-items: stretch; flex-direction: column; }
       .actions { justify-content: flex-start; }
@@ -281,6 +292,7 @@ export function renderHtml({ recalls, allRecalls, profile, generatedAt = new Dat
         </div>
       </div>
       <div class="actions">
+        <button class="button" id="refreshButton" type="button">Refresh data</button>
         <a class="button" href="report.md">Text report</a>
         <a class="button" href="recalls.json">JSON</a>
         <button class="button primary" id="printButton" type="button">Print</button>
@@ -319,6 +331,16 @@ export function renderHtml({ recalls, allRecalls, profile, generatedAt = new Dat
           <button class="button primary" id="applyProfile" type="button">Apply profile</button>
         </div>
         <div class="panel">
+          <h3>Quick adds</h3>
+          <div class="tabs">
+            <button class="quick-chip" data-add="watch:battery, charger, power bank" type="button">Chargers</button>
+            <button class="quick-chip" data-add="watch:crib, stroller, toy, baby" type="button">Baby gear</button>
+            <button class="quick-chip" data-add="watch:dresser, bed rail, furniture" type="button">Furniture</button>
+            <button class="quick-chip" data-add="allergens:egg, soy, shellfish" type="button">More allergens</button>
+            <button class="quick-chip" data-add="higherRisk:asthma, mobility, toddler" type="button">Care risks</button>
+          </div>
+        </div>
+        <div class="panel">
           <h3>Filter</h3>
           <div class="field">
             <label for="searchInput">Search</label>
@@ -330,6 +352,14 @@ export function renderHtml({ recalls, allRecalls, profile, generatedAt = new Dat
               <option value="all">All sources</option>
               <option value="FDA">FDA</option>
               <option value="CPSC">CPSC</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="sortFilter">Sort</label>
+            <select id="sortFilter">
+              <option value="priority">Priority first</option>
+              <option value="newest">Newest first</option>
+              <option value="source">Source</option>
             </select>
           </div>
           <div class="tabs" role="tablist" aria-label="Recall categories">
@@ -351,6 +381,7 @@ export function renderHtml({ recalls, allRecalls, profile, generatedAt = new Dat
             <p id="resultsSubhead">Sorted by score and date.</p>
           </div>
         </div>
+        <p class="status" id="statusLine">Loading current recall data...</p>
         <div class="recall-list" id="recallList"></div>
       </section>
     </section>
@@ -358,7 +389,7 @@ export function renderHtml({ recalls, allRecalls, profile, generatedAt = new Dat
   </main>
   <script type="application/json" id="appState">${stateJson}</script>
   <script>
-    const state = JSON.parse(document.getElementById("appState").textContent);
+    let state = JSON.parse(document.getElementById("appState").textContent);
     const els = {
       generatedLabel: document.getElementById("generatedLabel"),
       matchCount: document.getElementById("matchCount"),
@@ -369,24 +400,31 @@ export function renderHtml({ recalls, allRecalls, profile, generatedAt = new Dat
       allergenInput: document.getElementById("allergenInput"),
       riskInput: document.getElementById("riskInput"),
       applyProfile: document.getElementById("applyProfile"),
+      refreshButton: document.getElementById("refreshButton"),
       searchInput: document.getElementById("searchInput"),
       sourceFilter: document.getElementById("sourceFilter"),
+      sortFilter: document.getElementById("sortFilter"),
       recallList: document.getElementById("recallList"),
       resultsTitle: document.getElementById("resultsTitle"),
       resultsSubhead: document.getElementById("resultsSubhead"),
+      statusLine: document.getElementById("statusLine"),
       printButton: document.getElementById("printButton")
     };
     let mode = "priority";
     let profile = structuredClone(state.profile);
 
-    els.generatedLabel.textContent = new Date(state.generatedAt).toLocaleString(undefined, {
-      dateStyle: "medium",
-      timeStyle: "short"
-    });
     els.watchInput.value = profile.watch.join(", ");
     els.allergenInput.value = profile.allergens.join(", ");
     els.riskInput.value = profile.higherRisk.join(", ");
+    updateGeneratedLabel();
     els.sourceCount.textContent = state.recalls.length;
+
+    function updateGeneratedLabel() {
+      els.generatedLabel.textContent = new Date(state.generatedAt).toLocaleString(undefined, {
+        dateStyle: "medium",
+        timeStyle: "short"
+      });
+    }
 
     function normalize(value) {
       return String(value || "").toLowerCase().replace(/[^a-z0-9.]+/g, " ").replace(/\\s+/g, " ").trim();
@@ -437,10 +475,16 @@ export function renderHtml({ recalls, allRecalls, profile, generatedAt = new Dat
     }
 
     function rankedRecalls() {
-      return state.recalls
+      const ranked = state.recalls
         .map((recall) => ({ ...recall, match: scoreRecall(recall) }))
-        .filter((recall) => recall.match.score > 0)
-        .sort((a, b) => b.match.score - a.match.score || String(b.date).localeCompare(String(a.date)));
+        .filter((recall) => recall.match.score > 0);
+      if (els.sortFilter.value === "newest") {
+        return ranked.sort((a, b) => String(b.date).localeCompare(String(a.date)) || b.match.score - a.match.score);
+      }
+      if (els.sortFilter.value === "source") {
+        return ranked.sort((a, b) => a.source.localeCompare(b.source) || b.match.score - a.match.score);
+      }
+      return ranked.sort((a, b) => b.match.score - a.match.score || String(b.date).localeCompare(String(a.date)));
     }
 
     function filteredRecalls() {
@@ -460,8 +504,12 @@ export function renderHtml({ recalls, allRecalls, profile, generatedAt = new Dat
       els.matchCount.textContent = ranked.length;
       els.priorityCount.textContent = ranked.filter((recall) => classify(recall) === "priority").length;
       els.allergenCount.textContent = ranked.filter((recall) => classify(recall) === "allergen").length;
+      els.sourceCount.textContent = state.recalls.length;
       els.resultsTitle.textContent = recalls.length === 1 ? "1 match" : recalls.length + " matches";
       els.resultsSubhead.textContent = "Showing " + (els.sourceFilter.value === "all" ? "FDA and CPSC" : els.sourceFilter.value) + " records.";
+      els.statusLine.textContent = state.error
+        ? "Using the latest available data. Refresh failed: " + state.error
+        : "Current data loaded from official FDA and CPSC feeds.";
       els.recallList.innerHTML = recalls.length
         ? recalls.map(renderRecall).join("")
         : '<p class="empty">No matches for this profile and filter.</p>';
@@ -516,9 +564,29 @@ export function renderHtml({ recalls, allRecalls, profile, generatedAt = new Dat
       };
       render();
     });
+    document.querySelectorAll(".quick-chip").forEach((chip) => {
+      chip.addEventListener("click", () => {
+        const [target, values] = chip.dataset.add.split(":");
+        const input = target === "allergens" ? els.allergenInput : target === "higherRisk" ? els.riskInput : els.watchInput;
+        const existing = splitTerms(input.value);
+        for (const term of splitTerms(values)) {
+          if (!existing.map(normalize).includes(normalize(term))) existing.push(term);
+        }
+        input.value = existing.join(", ");
+        profile = {
+          ...profile,
+          watch: splitTerms(els.watchInput.value),
+          allergens: splitTerms(els.allergenInput.value),
+          higherRisk: splitTerms(els.riskInput.value)
+        };
+        render();
+      });
+    });
     els.searchInput.addEventListener("input", render);
     els.sourceFilter.addEventListener("change", render);
+    els.sortFilter.addEventListener("change", render);
     els.printButton.addEventListener("click", () => window.print());
+    els.refreshButton.addEventListener("click", () => refreshData(true));
     document.querySelectorAll(".tab").forEach((tab) => {
       tab.addEventListener("click", () => {
         mode = tab.dataset.mode;
@@ -526,7 +594,28 @@ export function renderHtml({ recalls, allRecalls, profile, generatedAt = new Dat
         render();
       });
     });
-    render();
+    async function refreshData(force = false) {
+      if (!state.dataEndpoint) {
+        render();
+        return;
+      }
+      els.statusLine.textContent = "Refreshing official recall data...";
+      els.refreshButton.disabled = true;
+      try {
+        const url = force ? state.dataEndpoint + "?refresh=1" : state.dataEndpoint;
+        const response = await fetch(url, { headers: { accept: "application/json" } });
+        const payload = await response.json();
+        if (!response.ok) throw new Error(payload.error || "Request failed");
+        state = { ...state, ...payload, dataEndpoint: state.dataEndpoint };
+        updateGeneratedLabel();
+      } catch (error) {
+        state = { ...state, error: error.message };
+      } finally {
+        els.refreshButton.disabled = false;
+        render();
+      }
+    }
+    refreshData(false);
   </script>
 </body>
 </html>`;
@@ -541,7 +630,7 @@ export async function writeReportFiles({ recalls, allRecalls = recalls, profile,
   ]);
 }
 
-function slimRecall(recall) {
+export function slimRecall(recall) {
   return {
     source: recall.source,
     title: recall.title,

@@ -2,7 +2,9 @@
 
 Recall Lens is a small official-recall dashboard for households and caregivers.
 
-It pulls current FDA food enforcement reports and CPSC product recalls, matches them against a short household profile, and publishes a clean static page. It is meant for the messy moment when a real recall, a news post, and a scam text all look similar.
+It pulls current FDA food enforcement reports and CPSC product recalls, matches them against a short household profile, and serves a dark dashboard. It is meant for the messy moment when a real recall, a news post, and a scam text all look similar.
+
+Live app: https://recall-lens.sivut.co/
 
 ## Why This Exists
 
@@ -39,6 +41,22 @@ Use a different profile:
 ```bash
 node src/cli.js --profile data/household.example.json --out docs
 ```
+
+## Dynamic App
+
+```bash
+npm start
+```
+
+Routes:
+
+- `/` - dashboard.
+- `/api/recalls` - current FDA and CPSC records.
+- `/recalls.json` - current normalized records.
+- `/report.md` - current text report.
+- `/healthz` - service check.
+
+Deployment files live in `deploy/`.
 
 ## Profile
 

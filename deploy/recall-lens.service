@@ -1,0 +1,18 @@
+[Unit]
+Description=Recall Lens dynamic web app
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/ubuntu/auto_agent/recall-lens
+ExecStart=/usr/bin/node src/server.js
+Restart=always
+RestartSec=5
+Environment=NODE_ENV=production
+Environment=PORT=4177
+User=ubuntu
+Group=ubuntu
+
+[Install]
+WantedBy=multi-user.target

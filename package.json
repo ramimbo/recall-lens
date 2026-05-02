@@ -6,6 +6,7 @@
   "private": false,
   "scripts": {
     "refresh": "node src/cli.js --out docs",
+    "start": "node src/server.js",
     "test": "node --test"
   },
   "keywords": [
