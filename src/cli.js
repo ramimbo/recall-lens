@@ -25,6 +25,12 @@ const profile = await loadProfile(profilePath);
 const recalls = await fetchOfficialRecalls();
 const ranked = rankRecalls(recalls, profile).slice(0, limit);
 
-await writeReportFiles({ recalls: ranked, profile, outDir, generatedAt });
+await writeReportFiles({
+  recalls: ranked,
+  allRecalls: recalls,
+  profile,
+  outDir,
+  generatedAt
+});
 
 console.log(`Wrote ${ranked.length} recall matches to ${outDir}`);

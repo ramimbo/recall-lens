@@ -1,8 +1,8 @@
 # Recall Lens
 
-Recall Lens is a small official-recall triage desk for households and caregivers.
+Recall Lens is a small official-recall dashboard for households and caregivers.
 
-It pulls current FDA food enforcement reports and CPSC product recalls, matches them against a short household profile, and writes a plain action list. It is meant for the messy moment when a real recall, a news post, and a scam text all look similar.
+It pulls current FDA food enforcement reports and CPSC product recalls, matches them against a short household profile, and publishes a clean static page. It is meant for the messy moment when a real recall, a news post, and a scam text all look similar.
 
 ## Why This Exists
 
@@ -14,6 +14,14 @@ Recall Lens gives a safer habit:
 2. Match only what might affect your home.
 3. Open the agency notice instead of a random message link.
 
+## Features
+
+- Editable household profile in the browser.
+- Priority, allergen, product, source, and text filters.
+- Plain action language for each match.
+- Expandable risk, reason, company, and remedy details.
+- Static `docs/` build for GitHub Pages.
+
 ## Run
 
 ```bash
@@ -22,7 +30,7 @@ npm run refresh
 
 Outputs land in `docs/`:
 
-- `index.html` - small shareable page.
+- `index.html` - interactive static dashboard.
 - `report.md` - same results in text.
 - `recalls.json` - matched records.
 

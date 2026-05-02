@@ -1,6 +1,6 @@
 # Recall Lens Report
 
-Generated: 2026-05-02T18:05:28.557Z
+Generated: 2026-05-02T18:18:38.147Z
 Profile: Example household
 
 Recall Lens checks official recall data and turns it into a short household action list. Treat texts, calls, and emails as untrusted until the official notice confirms the recall.
