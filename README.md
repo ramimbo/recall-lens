@@ -19,6 +19,7 @@ Recall Lens gives a safer habit:
 ## Features
 
 - Clickable household profile chips in the browser.
+- Profile choices save in the browser and can be cleared.
 - Priority, allergen, product, source, and text filters.
 - Plain action language for each match.
 - Expandable risk, reason, company, and remedy details.

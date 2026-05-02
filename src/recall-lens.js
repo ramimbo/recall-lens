@@ -107,10 +107,12 @@ export function scoreRecall(recall, profile) {
     }
   }
 
-  if (/class i|death|serious injury|listeria|salmonella|e\. coli|botulism/.test(text)) {
-    score += 5;
-  } else if (/class ii|fire|burn|choking|lead|undeclared/.test(text)) {
-    score += 3;
+  if (hits.length) {
+    if (/class i|death|serious injury|listeria|salmonella|e\. coli|botulism/.test(text)) {
+      score += 5;
+    } else if (/class ii|fire|burn|choking|lead|undeclared/.test(text)) {
+      score += 3;
+    }
   }
 
   return {
@@ -240,6 +242,7 @@ export function renderHtml({
     .choice-group h4 { margin: 0; font-size: 0.84rem; color: #e5ebf4; }
     .choice-grid { display: flex; flex-wrap: wrap; gap: 7px; }
     .inline-add { display: grid; grid-template-columns: minmax(0, 1fr) 120px auto; gap: 8px; align-items: center; }
+    .panel-actions { display: flex; gap: 8px; align-items: center; justify-content: space-between; margin-top: 12px; }
     .small { color: var(--muted); font-size: 0.84rem; line-height: 1.4; margin: 0; }
     .list-head { display: flex; justify-content: space-between; gap: 14px; align-items: end; margin: 2px 0 12px; }
     .list-head h2 { margin: 0; font-size: 1.24rem; }
@@ -343,6 +346,10 @@ export function renderHtml({
             </select>
             <button class="button" id="addCustomTerm" type="button">Add</button>
           </div>
+          <div class="panel-actions">
+            <p class="small" id="profileSaveStatus">Saved in this browser.</p>
+            <button class="button" id="clearProfile" type="button">Clear profile</button>
+          </div>
         </div>
         <div class="panel">
           <h3>Filter</h3>
@@ -406,6 +413,8 @@ export function renderHtml({
       customTermInput: document.getElementById("customTermInput"),
       customGroupSelect: document.getElementById("customGroupSelect"),
       addCustomTerm: document.getElementById("addCustomTerm"),
+      clearProfile: document.getElementById("clearProfile"),
+      profileSaveStatus: document.getElementById("profileSaveStatus"),
       refreshButton: document.getElementById("refreshButton"),
       searchInput: document.getElementById("searchInput"),
       sourceFilter: document.getElementById("sourceFilter"),
@@ -417,7 +426,8 @@ export function renderHtml({
       printButton: document.getElementById("printButton")
     };
     let mode = "priority";
-    let profile = structuredClone(state.profile);
+    const storageKey = "recall-lens-profile-v1";
+    let profile = loadStoredProfile() || structuredClone(state.profile);
     const profileOptions = {
       watch: ["baby", "toy", "charger", "battery", "power bank", "dresser", "bed rail", "furniture", "pool", "medicine", "dates", "sauce", "cinnamon", "cheese"],
       allergens: ["fish", "sesame", "wheat", "milk", "peanut", "tree nut", "egg", "soy", "shellfish"],
@@ -428,6 +438,30 @@ export function renderHtml({
     renderProfileControls();
     updateGeneratedLabel();
     els.sourceCount.textContent = state.recalls.length;
+
+    function loadStoredProfile() {
+      try {
+        const stored = JSON.parse(localStorage.getItem(storageKey));
+        if (!stored || typeof stored !== "object") return null;
+        return {
+          ...state.profile,
+          watch: Array.isArray(stored.watch) ? stored.watch : [],
+          allergens: Array.isArray(stored.allergens) ? stored.allergens : [],
+          higherRisk: Array.isArray(stored.higherRisk) ? stored.higherRisk : []
+        };
+      } catch {
+        return null;
+      }
+    }
+
+    function saveProfile() {
+      localStorage.setItem(storageKey, JSON.stringify({
+        watch: profile.watch || [],
+        allergens: profile.allergens || [],
+        higherRisk: profile.higherRisk || []
+      }));
+      els.profileSaveStatus.textContent = "Saved in this browser.";
+    }
 
     function updateGeneratedLabel() {
       els.generatedLabel.textContent = new Date(state.generatedAt).toLocaleString(undefined, {
@@ -477,6 +511,7 @@ export function renderHtml({
         ? terms.filter((item) => normalize(item) !== normalize(term))
         : [...terms, term];
       renderProfileControls();
+      saveProfile();
       render();
     }
 
@@ -491,6 +526,15 @@ export function renderHtml({
         profile[group] = [...groupTerms(group), term];
       }
       els.customTermInput.value = "";
+      renderProfileControls();
+      saveProfile();
+      render();
+    }
+
+    function clearProfile() {
+      profile = { ...state.profile, watch: [], allergens: [], higherRisk: [] };
+      localStorage.removeItem(storageKey);
+      els.profileSaveStatus.textContent = "Profile cleared.";
       renderProfileControls();
       render();
     }
@@ -517,8 +561,10 @@ export function renderHtml({
           score += 4;
         }
       }
-      if (/class i|death|serious injury|listeria|salmonella|e\\. coli|botulism/.test(text)) score += 5;
-      else if (/class ii|fire|burn|choking|lead|undeclared/.test(text)) score += 3;
+      if (hits.length) {
+        if (/class i|death|serious injury|listeria|salmonella|e\\. coli|botulism/.test(text)) score += 5;
+        else if (/class ii|fire|burn|choking|lead|undeclared/.test(text)) score += 3;
+      }
       return { score, hits: [...new Set(hits)], action: actionFor(score, text) };
     }
 
@@ -622,6 +668,7 @@ export function renderHtml({
       toggleProfileTerm(chip.dataset.group, chip.dataset.term);
     });
     els.addCustomTerm.addEventListener("click", addCustomTerm);
+    els.clearProfile.addEventListener("click", clearProfile);
     els.customTermInput.addEventListener("keydown", (event) => {
       if (event.key === "Enter") addCustomTerm();
     });
