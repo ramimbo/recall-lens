@@ -183,16 +183,16 @@ export function renderHtml({
   <style>
     :root {
       color-scheme: dark;
-      --paper: #090b10;
-      --panel: #111823;
-      --panel-2: #151e2b;
-      --ink: #f6f2ea;
-      --muted: #a8b0bd;
-      --line: #283548;
+      --paper: #080a0f;
+      --panel: #121926;
+      --panel-2: #182234;
+      --ink: #f8fafc;
+      --muted: #c2cad7;
+      --line: #3a4a63;
       --red: #ff7a6e;
       --red-soft: #351b1e;
-      --blue: #7cc7ff;
-      --blue-soft: #102538;
+      --blue: #8fd3ff;
+      --blue-soft: #153552;
       --green: #77d8a1;
       --green-soft: #132b24;
       --yellow: #f0c86b;
@@ -205,16 +205,16 @@ export function renderHtml({
     }
     * { box-sizing: border-box; }
     body { margin: 0; min-width: 320px; }
-    button, input, textarea, select { font: inherit; }
+    button, input, select { font: inherit; }
     a { color: var(--blue); font-weight: 750; text-decoration-thickness: 0.08em; text-underline-offset: 0.16em; }
     .shell { max-width: 1240px; margin: 0 auto; padding: 22px 18px 42px; overflow-x: hidden; }
     .topbar { display: flex; align-items: center; justify-content: space-between; gap: 18px; margin-bottom: 18px; }
     .brand { display: flex; align-items: center; gap: 12px; min-width: 0; }
-    .mark { width: 38px; height: 38px; display: grid; place-items: center; border-radius: 8px; background: var(--ink); color: #fff; font-weight: 850; }
+    .mark { width: 38px; height: 38px; display: grid; place-items: center; border-radius: 8px; background: var(--blue); color: #07111b; font-weight: 850; }
     .brand h1 { font-size: 1.12rem; line-height: 1; margin: 0; }
     .brand p { color: var(--muted); font-size: 0.9rem; margin: 4px 0 0; }
     .actions { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
-    .button { min-height: 38px; border: 1px solid var(--line); border-radius: 8px; background: var(--panel-2); color: var(--ink); padding: 8px 11px; font-weight: 750; cursor: pointer; }
+    .button { min-height: 38px; border: 1px solid var(--line); border-radius: 8px; background: var(--panel-2); color: var(--ink); padding: 8px 11px; font-weight: 750; cursor: pointer; white-space: nowrap; }
     .button.primary { background: var(--blue); color: #07111b; border-color: var(--blue); }
     .button:hover { border-color: #5d7290; }
     .hero { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr); gap: 14px; margin-bottom: 14px; }
@@ -222,7 +222,7 @@ export function renderHtml({
     .brief h2 { font-size: clamp(2.1rem, 5vw, 4.7rem); line-height: 0.93; margin: 0; max-width: 840px; letter-spacing: 0; overflow-wrap: anywhere; }
     .brief p { color: var(--muted); font-size: 1.02rem; line-height: 1.48; max-width: 720px; margin: 16px 0 0; }
     .stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
-    .stat { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 16px; min-height: 106px; display: grid; align-content: space-between; }
+    .stat { background: #101722; border: 1px solid var(--line); border-radius: 8px; padding: 16px; min-height: 106px; display: grid; align-content: space-between; }
     .stat strong { font-size: 2rem; line-height: 1; }
     .stat span { color: var(--muted); font-size: 0.86rem; font-weight: 700; text-transform: uppercase; }
     .workspace { display: grid; grid-template-columns: 312px minmax(0, 1fr); gap: 14px; align-items: start; }
@@ -231,11 +231,15 @@ export function renderHtml({
     .panel h3 { margin: 0 0 12px; font-size: 0.98rem; }
     .field { display: grid; gap: 6px; margin-bottom: 12px; }
     label { color: #d9e1ed; font-size: 0.84rem; font-weight: 760; }
-    input, textarea, select { width: 100%; border: 1px solid var(--line); background: #0c111a; color: var(--ink); border-radius: 8px; padding: 10px; }
-    textarea { min-height: 70px; resize: vertical; line-height: 1.35; }
+    input, select { width: 100%; border: 1px solid var(--line); background: #0b111c; color: var(--ink); border-radius: 8px; padding: 10px; }
     .tabs { display: flex; gap: 6px; flex-wrap: wrap; }
-    .tab, .quick-chip { border: 1px solid var(--line); border-radius: 8px; background: #0c111a; padding: 8px 10px; color: var(--muted); font-weight: 760; cursor: pointer; }
-    .tab.active, .quick-chip:hover { background: var(--blue-soft); border-color: var(--blue); color: var(--ink); }
+    .tab, .profile-chip { border: 1px solid var(--line); border-radius: 8px; background: #0b111c; padding: 8px 10px; color: var(--muted); font-weight: 760; cursor: pointer; }
+    .tab.active, .profile-chip.active { background: var(--blue-soft); border-color: var(--blue); color: var(--ink); }
+    .profile-chip:hover { border-color: var(--blue); color: var(--ink); }
+    .choice-group { display: grid; gap: 8px; margin-bottom: 14px; }
+    .choice-group h4 { margin: 0; font-size: 0.84rem; color: #e5ebf4; }
+    .choice-grid { display: flex; flex-wrap: wrap; gap: 7px; }
+    .inline-add { display: grid; grid-template-columns: minmax(0, 1fr) 120px auto; gap: 8px; align-items: center; }
     .small { color: var(--muted); font-size: 0.84rem; line-height: 1.4; margin: 0; }
     .list-head { display: flex; justify-content: space-between; gap: 14px; align-items: end; margin: 2px 0 12px; }
     .list-head h2 { margin: 0; font-size: 1.24rem; }
@@ -246,8 +250,8 @@ export function renderHtml({
     .recall.allergen { border-left-color: var(--yellow); }
     .recall.product { border-left-color: var(--green); }
     .recall-top { display: flex; justify-content: space-between; gap: 12px; align-items: start; }
-    .source { display: inline-flex; align-items: center; min-height: 26px; border-radius: 8px; padding: 4px 8px; color: #fff; background: var(--blue); font-size: 0.76rem; font-weight: 850; }
-    .source.FDA { background: var(--green); }
+    .source { display: inline-flex; align-items: center; min-height: 26px; border-radius: 8px; padding: 4px 8px; color: #fff; background: #236595; font-size: 0.76rem; font-weight: 850; }
+    .source.FDA { background: #1c6b4c; }
     .score { min-width: 54px; text-align: right; color: var(--muted); font-weight: 800; }
     .recall h3 { font-size: 1.08rem; line-height: 1.3; margin: 0; }
     .meta { display: flex; gap: 8px; flex-wrap: wrap; }
@@ -270,14 +274,15 @@ export function renderHtml({
       .controls { position: static; }
       .brief { min-height: 0; }
       .detail-grid { grid-template-columns: 1fr; }
+      .inline-add { grid-template-columns: 1fr; }
     }
     @media (max-width: 520px) {
       .shell { padding: 14px 12px 32px; }
       .stats { grid-template-columns: 1fr; }
-      .brief h2 { font-size: 2rem; line-height: 1; }
-      .actions { display: grid; grid-template-columns: 1fr 1fr; width: 100%; }
+      .brief { padding: 18px; }
+      .brief h2 { font-size: 1.86rem; line-height: 1.04; }
+      .actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); width: 100%; }
       .actions .button { text-align: center; }
-      .actions .primary { grid-column: 1 / -1; }
     }
   </style>
 </head>
@@ -293,7 +298,7 @@ export function renderHtml({
       </div>
       <div class="actions">
         <button class="button" id="refreshButton" type="button">Refresh data</button>
-        <a class="button" href="report.md">Text report</a>
+        <a class="button" href="report.md">Report</a>
         <a class="button" href="recalls.json">JSON</a>
         <button class="button primary" id="printButton" type="button">Print</button>
       </div>
@@ -315,29 +320,28 @@ export function renderHtml({
     <section class="workspace">
       <aside class="controls">
         <div class="panel">
-          <h3>Profile</h3>
-          <div class="field">
-            <label for="watchInput">Watch terms</label>
-            <textarea id="watchInput"></textarea>
+          <h3>Household Profile</h3>
+          <p class="small">Tap what matters. Results update immediately.</p>
+          <div class="choice-group">
+            <h4>Items</h4>
+            <div class="choice-grid" id="watchChoices"></div>
           </div>
-          <div class="field">
-            <label for="allergenInput">Allergens</label>
-            <textarea id="allergenInput"></textarea>
+          <div class="choice-group">
+            <h4>Allergies</h4>
+            <div class="choice-grid" id="allergenChoices"></div>
           </div>
-          <div class="field">
-            <label for="riskInput">Higher-risk terms</label>
-            <textarea id="riskInput"></textarea>
+          <div class="choice-group">
+            <h4>Care needs</h4>
+            <div class="choice-grid" id="riskChoices"></div>
           </div>
-          <button class="button primary" id="applyProfile" type="button">Apply profile</button>
-        </div>
-        <div class="panel">
-          <h3>Quick adds</h3>
-          <div class="tabs">
-            <button class="quick-chip" data-add="watch:battery, charger, power bank" type="button">Chargers</button>
-            <button class="quick-chip" data-add="watch:crib, stroller, toy, baby" type="button">Baby gear</button>
-            <button class="quick-chip" data-add="watch:dresser, bed rail, furniture" type="button">Furniture</button>
-            <button class="quick-chip" data-add="allergens:egg, soy, shellfish" type="button">More allergens</button>
-            <button class="quick-chip" data-add="higherRisk:asthma, mobility, toddler" type="button">Care risks</button>
+          <div class="inline-add">
+            <input id="customTermInput" type="text" placeholder="Add term">
+            <select id="customGroupSelect" aria-label="Term type">
+              <option value="watch">Item</option>
+              <option value="allergens">Allergy</option>
+              <option value="higherRisk">Care</option>
+            </select>
+            <button class="button" id="addCustomTerm" type="button">Add</button>
           </div>
         </div>
         <div class="panel">
@@ -396,10 +400,12 @@ export function renderHtml({
       priorityCount: document.getElementById("priorityCount"),
       allergenCount: document.getElementById("allergenCount"),
       sourceCount: document.getElementById("sourceCount"),
-      watchInput: document.getElementById("watchInput"),
-      allergenInput: document.getElementById("allergenInput"),
-      riskInput: document.getElementById("riskInput"),
-      applyProfile: document.getElementById("applyProfile"),
+      watchChoices: document.getElementById("watchChoices"),
+      allergenChoices: document.getElementById("allergenChoices"),
+      riskChoices: document.getElementById("riskChoices"),
+      customTermInput: document.getElementById("customTermInput"),
+      customGroupSelect: document.getElementById("customGroupSelect"),
+      addCustomTerm: document.getElementById("addCustomTerm"),
       refreshButton: document.getElementById("refreshButton"),
       searchInput: document.getElementById("searchInput"),
       sourceFilter: document.getElementById("sourceFilter"),
@@ -412,10 +418,14 @@ export function renderHtml({
     };
     let mode = "priority";
     let profile = structuredClone(state.profile);
+    const profileOptions = {
+      watch: ["baby", "toy", "charger", "battery", "power bank", "dresser", "bed rail", "furniture", "pool", "medicine", "dates", "sauce", "cinnamon", "cheese"],
+      allergens: ["fish", "sesame", "wheat", "milk", "peanut", "tree nut", "egg", "soy", "shellfish"],
+      higherRisk: ["child", "toddler", "pregnant", "older adult", "immune", "asthma", "mobility"]
+    };
 
-    els.watchInput.value = profile.watch.join(", ");
-    els.allergenInput.value = profile.allergens.join(", ");
-    els.riskInput.value = profile.higherRisk.join(", ");
+    addMissingOptions();
+    renderProfileControls();
     updateGeneratedLabel();
     els.sourceCount.textContent = state.recalls.length;
 
@@ -430,8 +440,59 @@ export function renderHtml({
       return String(value || "").toLowerCase().replace(/[^a-z0-9.]+/g, " ").replace(/\\s+/g, " ").trim();
     }
 
-    function splitTerms(value) {
-      return value.split(/[,\\n]/).map((item) => item.trim()).filter(Boolean);
+    function groupTerms(group) {
+      return profile[group] || [];
+    }
+
+    function hasTerm(group, term) {
+      return groupTerms(group).map(normalize).includes(normalize(term));
+    }
+
+    function addMissingOptions() {
+      for (const group of Object.keys(profileOptions)) {
+        for (const term of groupTerms(group)) {
+          if (!profileOptions[group].map(normalize).includes(normalize(term))) {
+            profileOptions[group].push(term);
+          }
+        }
+      }
+    }
+
+    function renderProfileControls() {
+      renderChoiceGroup(els.watchChoices, "watch");
+      renderChoiceGroup(els.allergenChoices, "allergens");
+      renderChoiceGroup(els.riskChoices, "higherRisk");
+    }
+
+    function renderChoiceGroup(container, group) {
+      container.innerHTML = profileOptions[group].map((term) => {
+        const active = hasTerm(group, term) ? " active" : "";
+        return '<button class="profile-chip' + active + '" data-group="' + group + '" data-term="' + escapeAttribute(term) + '" type="button">' + escapeHtml(term) + '</button>';
+      }).join("");
+    }
+
+    function toggleProfileTerm(group, term) {
+      const terms = groupTerms(group);
+      profile[group] = hasTerm(group, term)
+        ? terms.filter((item) => normalize(item) !== normalize(term))
+        : [...terms, term];
+      renderProfileControls();
+      render();
+    }
+
+    function addCustomTerm() {
+      const term = els.customTermInput.value.trim();
+      if (!term) return;
+      const group = els.customGroupSelect.value;
+      if (!profileOptions[group].map(normalize).includes(normalize(term))) {
+        profileOptions[group].push(term);
+      }
+      if (!hasTerm(group, term)) {
+        profile[group] = [...groupTerms(group), term];
+      }
+      els.customTermInput.value = "";
+      renderProfileControls();
+      render();
     }
 
     function scoreRecall(recall) {
@@ -555,32 +616,14 @@ export function renderHtml({
       return escapeHtml(value).replaceAll("'", "&#39;");
     }
 
-    els.applyProfile.addEventListener("click", () => {
-      profile = {
-        ...profile,
-        watch: splitTerms(els.watchInput.value),
-        allergens: splitTerms(els.allergenInput.value),
-        higherRisk: splitTerms(els.riskInput.value)
-      };
-      render();
+    document.querySelector(".controls").addEventListener("click", (event) => {
+      const chip = event.target.closest(".profile-chip");
+      if (!chip) return;
+      toggleProfileTerm(chip.dataset.group, chip.dataset.term);
     });
-    document.querySelectorAll(".quick-chip").forEach((chip) => {
-      chip.addEventListener("click", () => {
-        const [target, values] = chip.dataset.add.split(":");
-        const input = target === "allergens" ? els.allergenInput : target === "higherRisk" ? els.riskInput : els.watchInput;
-        const existing = splitTerms(input.value);
-        for (const term of splitTerms(values)) {
-          if (!existing.map(normalize).includes(normalize(term))) existing.push(term);
-        }
-        input.value = existing.join(", ");
-        profile = {
-          ...profile,
-          watch: splitTerms(els.watchInput.value),
-          allergens: splitTerms(els.allergenInput.value),
-          higherRisk: splitTerms(els.riskInput.value)
-        };
-        render();
-      });
+    els.addCustomTerm.addEventListener("click", addCustomTerm);
+    els.customTermInput.addEventListener("keydown", (event) => {
+      if (event.key === "Enter") addCustomTerm();
     });
     els.searchInput.addEventListener("input", render);
     els.sourceFilter.addEventListener("change", render);
